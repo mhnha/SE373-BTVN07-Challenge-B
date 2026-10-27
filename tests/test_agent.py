@@ -21,7 +21,7 @@ def stream_events(agent, messages):
 
 
 def test_registered_tools():
-    assert [t.name for t in TOOLS] == ["read_file", "write_file", "list_files", "save_memory", "forget_memory", "read_log_time_range"]
+    assert [t.name for t in TOOLS] == ["read_file", "write_file", "list_files", "save_memory", "forget_memory", "read_log_time_range", "run_code"]
 
 
 def test_read_then_write_with_parallel_calls_and_missing_file(lab_dirs):
@@ -51,7 +51,7 @@ def test_read_then_write_with_parallel_calls_and_missing_file(lab_dirs):
 
     requests = [e["data"] for e in events if e["event"] == "model_request"]
     assert requests[0]["system_prompt"] == system_prompt()
-    assert [t["name"] for t in requests[0]["tools"]] == ["read_file", "write_file", "list_files", "save_memory", "forget_memory", "read_log_time_range"]
+    assert [t["name"] for t in requests[0]["tools"]] == ["read_file", "write_file", "list_files", "save_memory", "forget_memory", "read_log_time_range", "run_code"]
     assert requests[0]["tools"][1]["parameters"]["required"] == ["path", "content"]
     second_roles = [m["role"] for m in requests[1]["messages"]]
     assert second_roles == ["user", "assistant", "tool", "tool"]

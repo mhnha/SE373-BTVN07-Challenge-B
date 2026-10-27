@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 import paths
 
 PROJECT_NAME = "stage-02-skills"
-APP_TITLE = "Stage 02: Skills"
-CAPABILITY_TEXT = "Tools: read_file, write_file. Skills: catalog tự phát hiện từ workspace/skills, model tự load SKILL.md bằng read_file. Không chạy lệnh."
+APP_TITLE = "Stage 02: Skills & Context Management"
+CAPABILITY_TEXT = "Tools: read_file, write_file, list_files, read_log_time_range, memory, run_code (Code Mode). Skills: catalog tự phát hiện từ workspace/skills."
 
 # Giới hạn số lần gọi model trong một lượt chat (ModelCallLimitMiddleware).
 MODEL_CALL_LIMIT = 8

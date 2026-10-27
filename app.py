@@ -164,6 +164,8 @@ def render_tool_step(started: dict, done: dict | None) -> None:
 def render_arguments(arguments: dict) -> None:
     if set(arguments) == {"command"}:
         st.code(arguments["command"], language="bash", wrap_lines=True)
+    elif set(arguments) == {"code"}:
+        st.code(arguments["code"], language="python", wrap_lines=True)
     else:
         st.json(arguments, expanded=True)
 

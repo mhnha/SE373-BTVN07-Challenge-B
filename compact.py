@@ -96,7 +96,7 @@ def _one_line(text: str) -> str:
 
 
 def _tool_text(message: ToolMessage) -> str:
-    """Bóc JSON của read_file lấy phần content; tool result lỗi (ok=false) là nhiễu nên bỏ qua."""
+    """Bóc JSON của read_file/run_code lấy phần content hoặc stdout; tool result lỗi (ok=false) là nhiễu nên bỏ qua."""
     text = message.text or ""
     try:
         payload = json.loads(text)
@@ -105,6 +105,8 @@ def _tool_text(message: ToolMessage) -> str:
     if isinstance(payload, dict):
         if isinstance(payload.get("content"), str):
             return payload["content"]
+        if isinstance(payload.get("stdout"), str):
+            return payload["stdout"]
         if payload.get("ok") is False:
             return ""
     return text

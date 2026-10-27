@@ -65,6 +65,6 @@ def test_project_has_only_its_own_modules():
         "tool_result_budget.py",
         "trace.py",
     ]
-    assert sorted(p.name for p in (ROOT / "tools").glob("*.py")) == ["__init__.py", "files.py", "memory.py"]
+    assert sorted(p.name for p in (ROOT / "tools").glob("*.py")) == ["__init__.py", "code_runner.py", "files.py", "memory.py"]
     assert sorted(p.name for p in (ROOT / "fixtures" / "skills").iterdir()) == ["weekly-report"]
     assert sorted(p.name for p in (ROOT / "workspace" / "skills").iterdir()) == ["weekly-report"]

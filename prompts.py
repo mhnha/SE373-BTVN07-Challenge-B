@@ -36,7 +36,9 @@ CAPABILITY_PROMPT = """Workspace:
 - Nếu kết quả log bị cắt ngắn (truncated), không được coi đó là toàn bộ nội dung file.
 - Nếu cần thông tin không có trong kết quả rút gọn, hãy sử dụng tool phù hợp để đọc thêm thay vì suy đoán hoặc yêu cầu người dùng tự cung cấp file.
 - Khi phân tích log, phân biệt triệu chứng (ví dụ DB_POOL_EXHAUSTED) với nguyên nhân tiềm ẩn (ví dụ connection leak).
-- Bạn không chạy được lệnh shell trong project này."""
+- Code Mode (run_code): Khi cần phân tích, tìm kiếm, đếm lỗi hoặc duyệt qua nhiều file/log dung lượng lớn, hãy gọi tool run_code thay vì đọc trực tiếp nhiều file để tránh làm tràn context.
+  Trong script Python của run_code, bạn có sẵn SDK `tools`: `tools.list_files(path)`, `tools.read_file(path)`, `tools.read_log_time_range(path, start_time, end_time)`. Script tự xử lý logic, lọc dữ liệu và dùng print(...) để in ra kết quả/findings tóm tắt cuối cùng.
+- Bạn không chạy được lệnh shell trực tiếp, nhưng có thể chạy mã Python an toàn qua tool run_code."""
 
 
 def build_system_prompt(catalog_block: str, memory_block: str = "") -> str:

@@ -10,10 +10,10 @@ from config import MODEL_CALL_LIMIT, TOOL_CALL_LIMIT, Settings
 from observer import ObserverMiddleware
 from prompts import build_system_prompt
 from skill_catalog import Catalog, render_catalog, scan_skills
-from tools import read_file, write_file, list_files, save_memory, forget_memory, read_log_time_range
+from tools import read_file, write_file, list_files, save_memory, forget_memory, read_log_time_range, run_code
 from tools.memory import load_memory
 
-TOOLS = [read_file, write_file, list_files, save_memory, forget_memory, read_log_time_range]
+TOOLS = [read_file, write_file, list_files, save_memory, forget_memory, read_log_time_range, run_code]
 
 
 def build_model(settings: Settings) -> ChatOpenAI:
